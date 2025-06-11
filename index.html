@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buba - La diversión que enseña</title>
+    <title>Buba - ¡La diversión que enseña!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,11 +13,19 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Nunito', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFD93D 0%, #FF6B6B 25%, #4ECDC4 50%, #45B7D1 75%, #96CEB4 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -28,12 +37,13 @@
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 30px rgba(255, 107, 107, 0.3);
+            border-bottom: 4px solid #FFD93D;
         }
 
         nav {
@@ -44,14 +54,22 @@
         }
 
         .logo img {
-            height: 80px;
+            height: 90px;
             width: auto;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
 
         .logo img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% { transform: scale(1.15) translateY(0); }
+            40% { transform: scale(1.15) translateY(-10px); }
+            80% { transform: scale(1.15) translateY(-5px); }
         }
 
         /* Modal Styles */
@@ -63,8 +81,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            animation: fadeIn 0.3s ease;
+            background: rgba(255, 107, 107, 0.9);
+            animation: fadeIn 0.4s ease;
         }
 
         .modal-content {
@@ -74,14 +92,15 @@
             transform: translate(-50%, -50%);
             max-width: 90%;
             max-height: 90%;
-            animation: zoomIn 0.3s ease;
+            animation: zoomBounce 0.6s ease;
         }
 
         .modal-content img {
             width: 100%;
             height: auto;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(255, 193, 7, 0.6);
+            border: 6px solid #FFD93D;
         }
 
         .close {
@@ -89,14 +108,16 @@
             top: 20px;
             right: 35px;
             color: #fff;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .close:hover {
-            color: #FFC107;
+            color: #FFD93D;
+            transform: scale(1.2) rotate(90deg);
         }
 
         @keyframes fadeIn {
@@ -104,41 +125,42 @@
             to { opacity: 1; }
         }
 
-        @keyframes zoomIn {
-            from { 
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-            to { 
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
+        @keyframes zoomBounce {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #333;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
         }
 
         .nav-links a:hover {
-            color: #2196F3;
+            color: #FF6B6B;
+            background: rgba(255, 107, 107, 0.1);
+            transform: translateY(-3px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(255, 217, 61, 0.9) 0%, rgba(255, 107, 107, 0.9) 50%, rgba(78, 205, 196, 0.9) 100%);
             color: white;
             text-align: center;
-            padding: 150px 0 100px;
-            margin-top: 80px;
+            padding: 180px 0 120px;
+            margin-top: 90px;
             position: relative;
             overflow: hidden;
         }
@@ -146,18 +168,19 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background-image: url('logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.4;
-            z-index: 0;
-            animation: float 6s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: sparkle 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         .hero .container {
@@ -165,135 +188,252 @@
             z-index: 1;
         }
 
-        .hero h1, .hero p {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero .cta-button {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
             display: inline-block;
-            background: #FFC107;
+            background: linear-gradient(45deg, #FFD93D, #FFC107);
             color: #333;
-            padding: 15px 30px;
+            padding: 20px 40px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+            border: 3px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '🎮';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: left 0.4s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 193, 7, 0.6);
+            background: linear-gradient(45deg, #FFC107, #FFD93D);
+        }
+
+        .cta-button:hover::before {
+            left: 15px;
         }
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
             background: white;
-            margin: 20px 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 217, 61, 0.05), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         section:nth-child(even) {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 100%);
+        }
+
+        section .container {
+            position: relative;
+            z-index: 1;
         }
 
         h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
             margin-bottom: 3rem;
-            color: #2196F3;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            position: relative;
+        }
+
+        h2::after {
+            content: '⭐';
+            position: absolute;
+            top: -10px;
+            right: -40px;
+            font-size: 2rem;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* About Section */
         .about-content {
             text-align: center;
-            font-size: 1.2rem;
-            max-width: 800px;
+            font-size: 1.3rem;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+            font-weight: 600;
+            line-height: 1.8;
         }
 
         /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .feature-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 2.5rem;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B6B, #FFD93D, #4ECDC4, #45B7D1);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.03);
+            border-color: #FFD93D;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(0);
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card:nth-child(2) .feature-icon { animation-delay: 0.5s; }
+        .feature-card:nth-child(3) .feature-icon { animation-delay: 1s; }
+        .feature-card:nth-child(4) .feature-icon { animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #FF6B6B;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
         /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 3px solid #FFD93D;
+            position: relative;
+        }
+
+        .product-card::after {
+            content: '✨';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            z-index: 2;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 107, 107, 0.2);
+        }
+
+        .product-image, .product-video {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
         }
 
         .product-image {
-            width: 100%;
-            height: 200px;
             background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: white;
-        }
-
-        .product-video {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
         }
 
         .product-video video {
@@ -313,85 +453,207 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: white;
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .product-info h3 {
-            color: #2196F3;
-            margin-bottom: 0.5rem;
+            font-family: 'Fredoka One', cursive;
+            color: #FF6B6B;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .product-info p {
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        /* Product Categories */
+        .product-category {
+            margin-bottom: 4rem;
+        }
+
+        .product-category h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #4ECDC4;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-category h3::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B6B, #FFD93D);
+            border-radius: 2px;
         }
 
         /* Clients Grid */
         .clients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .client-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 2.5rem;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid #FFD93D;
+        }
+
+        .client-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(78, 205, 196, 0.2);
+        }
+
+        .client-card h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #45B7D1;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         /* Distribution Channels */
         .channels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .channel-item {
             text-align: center;
-            padding: 1rem;
+            padding: 2rem;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid #96CEB4;
         }
 
-        .channel-item i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #2196F3;
+        .channel-item:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(150, 206, 180, 0.3);
+        }
+
+        .channel-item div {
+            animation: bounce2 2s ease-in-out infinite;
+        }
+
+        .channel-item:nth-child(2) div { animation-delay: 0.3s; }
+        .channel-item:nth-child(3) div { animation-delay: 0.6s; }
+        .channel-item:nth-child(4) div { animation-delay: 0.9s; }
+        .channel-item:nth-child(5) div { animation-delay: 1.2s; }
+        .channel-item:nth-child(6) div { animation-delay: 1.5s; }
+
+        @keyframes bounce2 {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-5px); }
+            75% { transform: translateY(5px); }
+        }
+
+        .channel-item h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #96CEB4;
+            font-size: 1.2rem;
         }
 
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .contact-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 2.5rem;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 3px solid #FF6B6B;
+            position: relative;
+        }
+
+        .contact-card::before {
+            content: '💌';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
         }
 
         .contact-card h3 {
-            color: #2196F3;
-            margin-bottom: 1rem;
+            font-family: 'Fredoka One', cursive;
+            color: #FF6B6B;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .contact-card p {
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
 
         /* Footer */
         footer {
-            background: #333;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '🌟✨🎈🎮🌈';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            font-size: 2rem;
+            animation: floatAcross 10s linear infinite;
+        }
+
+        @keyframes floatAcross {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        footer p {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         /* Responsive */
@@ -401,54 +663,70 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 2.3rem;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
             }
         }
 
-        /* Product Categories */
-        .product-category {
-            margin-bottom: 3rem;
+        /* Floating elements */
+        .floating-emoji {
+            position: fixed;
+            font-size: 2rem;
+            z-index: 100;
+            pointer-events: none;
+            animation: floatUp 4s ease-in-out infinite;
         }
 
-        .product-category h3 {
-            color: #2196F3;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
+        @keyframes floatUp {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating emojis -->
+    <div class="floating-emoji" style="left: 10%; animation-delay: 0s;">🎮</div>
+    <div class="floating-emoji" style="left: 20%; animation-delay: 1s;">⭐</div>
+    <div class="floating-emoji" style="left: 30%; animation-delay: 2s;">🌈</div>
+    <div class="floating-emoji" style="left: 40%; animation-delay: 3s;">🎈</div>
+    <div class="floating-emoji" style="left: 50%; animation-delay: 4s;">🎯</div>
+    <div class="floating-emoji" style="left: 60%; animation-delay: 5s;">✨</div>
+    <div class="floating-emoji" style="left: 70%; animation-delay: 6s;">🎪</div>
+    <div class="floating-emoji" style="left: 80%; animation-delay: 7s;">🌟</div>
+    <div class="floating-emoji" style="left: 90%; animation-delay: 8s;">🎊</div>
+
     <!-- Header -->
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="logo.png" alt="Buba - La diversión que enseña" id="logoImg" onclick="openModal()">
+                <img src="logo.png" alt="Buba - ¡La diversión que enseña!" id="logoImg" onclick="openModal()">
             </div>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#inicio">🏠 Inicio</a></li>
+                <li><a href="#nosotros">👋 Nosotros</a></li>
+                <li><a href="#productos">🎮 Jueguitos</a></li>
+                <li><a href="#clientes">🤝 Amigos</a></li>
+                <li><a href="#contacto">📞 Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -456,48 +734,48 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1 class="floating">Bienvenidos a Buba</h1>
-            <p>La diversión que enseña - Juegos educativos que transforman el aprendizaje</p>
-            <a href="#productos" class="cta-button">Descubre nuestros juegos</a>
+            <h1>¡Bienvenidos al mundo de Buba! 🌟</h1>
+            <p>🎮 ¡La diversión que enseña! - Juegos súper divertidos que hacen que aprender sea una aventura increíble 🚀</p>
+            <a href="#productos" class="cta-button">¡Descubre nuestros jueguitos mágicos!</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="nosotros">
         <div class="container">
-            <h2>¿Quiénes somos?</h2>
+            <h2>¿Quiénes somos? 🌈</h2>
             <div class="about-content">
-                <p>Buba es una empresa líder en el desarrollo de juegos educativos para móviles, especializada en crear experiencias de aprendizaje divertidas y efectivas para niños. Con presencia internacional, contamos con 6 oficinas estratégicamente ubicadas en Brasil, España y Estados Unidos, y un equipo de 250 profesionales dedicados apasionados por la educación y la tecnología.</p>
+                <p>Buba es una empresa de juegos educativos para niños, con 150 empleados y tres oficinas ubicadas en Brasil, España y Estados Unidos. Desarrollamos juegos propios y también en colaboración con empresas de diversos sectores. Nuestros juegos están disponibles en las principales plataformas.</p>
                 <br>
-                <p>Nuestra misión es revolucionar la forma en que los niños aprenden, combinando pedagogía avanzada con tecnología de vanguardia para crear juegos que no solo entretienen, sino que también educan de manera significativa.</p>
-            </div>
+               <!-- <p>Nuestra misión es hacer que aprender sea la aventura más emocionante de todas. Combinamos la diversión con el aprendizaje para crear experiencias que no solo te hacen reír, ¡sino que también te ayudan a crecer y descubrir cosas increíbles! 🌟🎪</p>
+           --> </div>
         </div>
     </section>
 
     <!-- Differential Section -->
     <section>
         <div class="container">
-            <h2>Nuestro diferencial</h2>
+            <h2>¿Por qué somos súper especiales? 🎪</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3>Metodología propia</h3>
-                    <p>Desarrollamos contenido basado en investigación pedagógica y neurociencia aplicada al aprendizaje infantil.</p>
+                    <h3>¡Método súper divertido!</h3>
+                    <p>Creamos nuestros juegos con mucho amor y ciencia, para que cada niño aprenda de la forma más divertida posible. ¡Como magia, pero real!</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
-                    <h3>Alcance global</h3>
-                    <p>Presencia internacional con equipos multiculturales que entienden las necessidades locales de cada mercado.</p>
+                    <h3>¡Amigos por todo el mundo!</h3>
+                    <p>Tenemos oficinas en muchos países y hacemos juegos para niños de todas partes del mundo. ¡Somos como una gran familia global!</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
-                    <h3>Tecnología avanzada</h3>
-                    <p>Utilizamos inteligencia artificial y analytics para personalizar la experiencia de aprendizaje de cada niño.</p>
+                    <h3>¡Tecnología súper cool!</h3>
+                    <p>Usamos la tecnología más avanzada (¡como robots súper inteligentes!) para que cada juego sea perfecto para ti y tu forma de aprender.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👨‍👩‍👧‍👦</div>
-                    <h3>Enfoque familiar</h3>
-                    <p>Creamos experiencias que involucran a toda la familia en el proceso educativo, fortaleciendo vínculos.</p>
+                    <h3>¡Diversión en familia!</h3>
+                    <p>Nuestros juegos son tan geniales que toda la familia quiere jugar. ¡Papás, mamás, hermanos y hasta los abuelos se divierten!</p>
                 </div>
             </div>
         </div>
@@ -506,10 +784,10 @@
     <!-- Products Section -->
     <section id="productos">
         <div class="container">
-            <h2>Nuestros productos</h2>
+            <h2>¡Nuestros jueguitos mágicos! 🎮</h2>
             
             <div class="product-category">
-                <h3>🎮 Productos para el público general</h3>
+                <h3>🌟 ¡Juegos para todos los pequeños exploradores!</h3>
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-video">
@@ -519,8 +797,8 @@
                             </video>
                         </div>
                         <div class="product-info">
-                            <h3>Letras Mágicas</h3>
-                            <p>Aprende el alfabeto de forma divertida con aventuras interactivas y personajes encantadores.</p>
+                            <h3>Letras Mágicas ✨</h3>
+                            <p>¡Aprende el abecedario con aventuras súper divertidas! Cada letra tiene su propia historia mágica y personajes adorables que te ayudarán a recordar todo fácilmente.</p>
                         </div>
                     </div>
                     <div class="product-card">
@@ -531,8 +809,8 @@
                             </video>
                         </div>
                         <div class="product-info">
-                            <h3>Números Aventureros</h3>
-                            <p>Descubre el mundo de las matemáticas con juegos dinámicos y desafíos progresivos.</p>
+                            <h3>Números Aventureros 🚀</h3>
+                            <p>¡Descubre el mundo súper genial de las matemáticas! Con desafíos divertidos y aventuras numéricas que te harán amar contar, sumar y resolver problemas.</p>
                         </div>
                     </div>
                     <div class="product-card">
@@ -543,36 +821,35 @@
                             </video>
                         </div>
                         <div class="product-info">
-                            <h3>Exploradores del Mundo</h3>
-                            <p>Viaja por diferentes países y culturas mientras aprendes geografía e historia.</p>
+                            <h3>Exploradores del Mundo 🗺️</h3>
+                            <p>¡Viaja por países increíbles y conoce culturas fascinantes! Aprende geografía e historia de la forma más aventurera y emocionante.</p>
                         </div>
                     </div>                    
-                    </div>
                 </div>
             </div>
 
             <div class="product-category">
-                <h3>🏢 Productos en alianza empresarial</h3>
+                <h3>🏢 ¡Juegos especiales para colegios y familias!</h3>
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">🏫</div>
                         <div class="product-info">
-                            <h3>Aula Digital Pro</h3>
-                            <p>Plataforma integral para centros educativos con seguimiento personalizado del progreso estudiantil.</p>
+                            <h3>Aula Digital Pro 📚</h3>
+                            <p>¡Una plataforma súper completa para que los profesores puedan hacer las clases más divertidas! Con seguimiento personalizado para cada pequeño estudiante.</p>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">👨‍💼</div>
                         <div class="product-info">
-                            <h3>Familia Conectada</h3>
-                            <p>Solución corporativa para empresas que buscan apoyar a familias trabajadoras con herramientas educativas.</p>
+                            <h3>Familia Conectada 💝</h3>
+                            <p>¡Una solución especial para empresas que quieren ayudar a las familias! Herramientas educativas para que papás y mamás puedan apoyar el aprendizaje en casa.</p>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">🏥</div>
                         <div class="product-info">
-                            <h3>Terapia Lúdica</h3>
-                            <p>Juegos especializados para centros de terapia infantil y desarrollo cognitivo.</p>
+                            <h3>Terapia Lúdica 🌈</h3>
+                            <p>Juegos súper especiales diseñados para centros de terapia infantil, que ayudan a los niños a crecer y desarrollarse de forma divertida.</p>
                         </div>
                     </div>
                 </div>
@@ -583,31 +860,31 @@
     <!-- Clients Section -->
     <section id="clientes">
         <div class="container">
-            <h2>Nuestros clientes</h2>
+            <h2>¡Nuestros amigos súper especiales! 🤝</h2>
             <div class="clients-grid">
                 <div class="client-card">
                     <h3>🏫 Colegios Virtuales Iberia</h3>
-                    <p>Red de centros educativos digitales</p>
+                    <p>¡Una red súper cool de colegios digitales!</p>
                 </div>
                 <div class="client-card">
                     <h3>🌟 Fundación Aprender Jugando</h3>
-                    <p>ONG especializada en educación infantil</p>
+                    <p>¡Una organización genial especializada en educación divertida!</p>
                 </div>
                 <div class="client-card">
                     <h3>🏢 Grupo Educativo Mediterráneo</h3>
-                    <p>Corporación de servicios educativos</p>
+                    <p>¡Una corporación increíble de servicios educativos!</p>
                 </div>
                 <div class="client-card">
                     <h3>🎯 Innova Educación Digital</h3>
-                    <p>Consultora en tecnología educativa</p>
+                    <p>¡Consultores súper inteligentes en tecnología educativa!</p>
                 </div>
                 <div class="client-card">
                     <h3>🌱 Centro Desarrollo Infantil Valencia</h3>
-                    <p>Especialistas en terapia y desarrollo</p>
+                    <p>¡Especialistas increíbles en terapia y desarrollo!</p>
                 </div>
                 <div class="client-card">
                     <h3>🎪 Ludotecas Inteligentes Barcelona</h3>
-                    <p>Red de espacios de juego educativo</p>
+                    <p>¡Una red súper divertida de espacios de juego educativo!</p>
                 </div>
             </div>
         </div>
@@ -616,7 +893,7 @@
     <!-- Distribution Channels -->
     <section>
         <div class="container">
-            <h2>Canales de distribución</h2>
+            <h2>¿Dónde puedes encontrar nuestros jueguitos? 📱</h2>
             <div class="channels-grid">
                 <div class="channel-item">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
@@ -632,11 +909,11 @@
                 </div>
                 <div class="channel-item">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">💻</div>
-                    <h3>Web Platform</h3>
+                    <h3>Plataforma Web</h3>
                 </div>
                 <div class="channel-item">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📺</div>
-                    <h3>Smart TV Apps</h3>
+                    <h3>Apps Smart TV</h3>
                 </div>
                 <div class="channel-item">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🏫</div>
@@ -649,31 +926,31 @@
     <!-- Contact Section -->
     <section id="contacto">
         <div class="container">
-            <h2>Contacto</h2>
+            <h2>¡Hablemos y seamos amigos! 📞</h2>
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>🇪🇸 España - Madrid</h3>
-                    <p><strong>Dirección:</strong> Paseo de la Castellana, 95<br>28046 Madrid</p>
-                    <p><strong>Teléfono:</strong> +34 910 123 456</p>
-                    <p><strong>WhatsApp:</strong> +34 678 901 234</p>
+                    <p><strong>🏠 Dirección:</strong> Paseo de la Castellana, 95<br>28046 Madrid</p>
+                    <p><strong>📞 Teléfono:</strong> +34 910 123 456</p>
+                    <p><strong>💬 WhatsApp:</strong> +34 678 901 234</p>
                 </div>
                 <div class="contact-card">
                     <h3>🇧🇷 Brasil - São Paulo</h3>
-                    <p><strong>Dirección:</strong> Av. das Nações Unidas, 14.401<br>Alphaville, Barueri - SP</p>
-                    <p><strong>Teléfono:</strong> +55 11 3456-7890</p>
-                    <p><strong>WhatsApp:</strong> +55 11 98765-4321</p>
+                    <p><strong>🏠 Dirección:</strong> Av. das Nações Unidas, 14.401<br>Alphaville, Barueri - SP</p>
+                    <p><strong>📞 Teléfono:</strong> +55 11 3456-7890</p>
+                    <p><strong>💬 WhatsApp:</strong> +55 11 98765-4321</p>
                 </div>
                 <div class="contact-card">
                     <h3>🇺🇸 Estados Unidos - Miami</h3>
-                    <p><strong>Dirección:</strong> 1450 Brickell Avenue<br>Miami, FL 33131</p>
-                    <p><strong>Teléfono:</strong> +1 305 123 4567</p>
-                    <p><strong>WhatsApp:</strong> +1 305 987 6543</p>
+                    <p><strong>🏠 Dirección:</strong> 1450 Brickell Avenue<br>Miami, FL 33131</p>
+                    <p><strong>📞 Teléfono:</strong> +1 305 123 4567</p>
+                    <p><strong>💬 WhatsApp:</strong> +1 305 987 6543</p>
                 </div>
                 <div class="contact-card">
-                    <h3>📧 Contacto general</h3>
-                    <p><strong>Email:</strong> contato@buba.com</p>
-                    <p><strong>Soporte:</strong> soporte@buba.com</p>
-                    <p><strong>Ventas:</strong> ventas@buba.com</p>
+                    <h3>📧 ¡Escríbenos!</h3>
+                    <p><strong>✉️ Email:</strong> contato@buba.com</p>
+                    <p><strong>🆘 Ayuda:</strong> soporte@buba.com</p>
+                    <p><strong>💼 Ventas:</strong> ventas@buba.com</p>
                 </div>
             </div>
         </div>
@@ -683,20 +960,21 @@
     <div id="logoModal" class="modal" onclick="closeModal(event)">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img src="logo.png" alt="Buba - Logo Completo">
+            <img src="logo.png" alt="Buba - ¡Logo Completo y Súper Genial!">
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Buba - La diversión que enseña. Todos los derechos reservados.</p>
-            <p>Transformando el aprendizaje infantil a través del juego desde 2018</p>
+            <p>🎮 © 2025 Buba - ¡La diversión que enseña! 🌟 Todos los derechos reservados.</p>
+            <p>✨ ¡Transformando el aprendizaje infantil a través del juego desde 2018! 🚀</p>
         </div>
     </footer>
 
-    <!-- Smooth scrolling script -->
+    <!-- Scripts -->
     <script>
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -710,31 +988,67 @@
             });
         });
 
-        // Add some interactive elements
+        // Enhanced interactive elements
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card, .product-card, .client-card');
+            const cards = document.querySelectorAll('.feature-card, .product-card, .client-card, .contact-card');
             
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.transform = this.classList.contains('feature-card') ? 
+                        'translateY(-15px) scale(1.03)' : 
+                        'translateY(-10px) scale(1.02)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
                 });
+
+                // Add click sound effect (visual feedback)
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Floating emojis animation restart
+            function restartFloatingEmojis() {
+                const emojis = document.querySelectorAll('.floating-emoji');
+                emojis.forEach((emoji, index) => {
+                    emoji.style.animationDelay = `${index}s`;
+                    emoji.style.left = `${10 + (index * 10)}%`;
+                });
+            }
+
+            setInterval(restartFloatingEmojis, 9000);
+
+            // Add sparkle effect on scroll
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach((section, index) => {
+                    const rate = scrolled * -0.5;
+                    section.style.transform = `translateZ(0)`;
+                });
             });
         });
 
-        // Modal functions
+        // Modal functions with enhanced animations
         function openModal() {
-            document.getElementById('logoModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            const modal = document.getElementById('logoModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Add confetti effect
+            createConfetti();
         }
 
         function closeModal(event) {
             if (!event || event.target === document.getElementById('logoModal') || event.target.classList.contains('close')) {
                 document.getElementById('logoModal').style.display = 'none';
-                document.body.style.overflow = 'auto'; // Enable scrolling
+                document.body.style.overflow = 'auto';
             }
         }
 
@@ -744,6 +1058,84 @@
                 closeModal();
             }
         });
+
+        // Confetti effect for logo click
+        function createConfetti() {
+            const colors = ['#FFD93D', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
+            const emojis = ['🎉', '✨', '🌟', '🎊', '🎈'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-50px';
+                    confetti.style.fontSize = '2rem';
+                    confetti.style.zIndex = '10000';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.animation = 'confettiFall 3s ease-out forwards';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        // Add confetti animation CSS
+        const confettiStyle = document.createElement('style');
+        confettiStyle.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(confettiStyle);
+
+        // Add click effects to buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('cta-button')) {
+                createClickEffect(e.target, e);
+            }
+        });
+
+        function createClickEffect(element, event) {
+            const rect = element.getBoundingClientRect();
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = (event.clientX - rect.left - 25) + 'px';
+            ripple.style.top = (event.clientY - rect.top - 25) + 'px';
+            ripple.style.width = '50px';
+            ripple.style.height = '50px';
+            
+            element.style.position = 'relative';
+            element.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Add ripple animation CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
     </script>
 </body>
 </html>
